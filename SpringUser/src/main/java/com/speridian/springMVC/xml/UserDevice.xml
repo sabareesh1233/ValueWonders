@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.speridian.springMVC.mapper.UserDeviceMapper">
+
+	<select id="listOfUserDevice"
+		resultType="com.speridian.springMVC.model.UserDevice">
+		SELECT * FROM userdevice
+	</select>
+	<select id="getUserDevice"
+		resultType="com.speridian.springMVC.model.UserDevice">
+		SELECT * FROM userdevice WHERE userid = #{userid}
+	</select>
+	<insert id="saveUserDevice"
+		parameterType="com.speridian.springMVC.model.UserDevice">
+		INSERT INTO
+		userdevice(userid,hardwareid,manfractureid,os,model)
+		VALUES
+		(#{userid},#{hardwareid},#{manfractureid},#{os},#{model})
+	</insert>
+
+	<update id="deleteUserDevice"
+		parameterType="com.speridian.springMVC.model.UserDevice">
+		DELETE FROM userdevice WHERE userid = #{userid}
+	</update>
+	
+	<update id = "updateUserDevice"
+	    parameterType="com.speridian.springMVC.model.UserDevice">
+	    UPDATE userdevice SET
+	          hardwareid    = #{hardwareid},
+	          manfractureid = #{manfractureid},
+	          os            = #{os},
+	          model         = #{model}
+	          WHERE userid  = #{userid}; 
+	    </update>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.speridian.springMVC.mapper.UserMapper">
+	<select id="listOfUser"
+		resultType="com.speridian.springMVC.model.User">
+		SELECT * FROM users
+	</select>
+	<select id="getUser"
+		resultType="com.speridian.springMVC.model.User">
+		SELECT * FROM users WHERE id = #{id}
+	</select>
+	<insert id="saveUser"
+		parameterType="com.speridian.springMVC.model.User">
+		INSERT INTO
+		users(id,firstname,lastname,email,mobileno)
+		VALUES
+		(#{id},#{firstname},#{lastname},#{email},#{mobileno})
+	</insert>
+	<update id="deleteUser"
+		parameterType="com.speridian.springMVC.model.User">
+		DELETE FROM users WHERE id= #{id}
+	</update>
+	<update id="updateUser"
+	    parameterType="com.speridian.springMVC.model.User">
+		UPDATE users
+		SET firstname = #{firstname},
+		    lastname = #{lastname},
+		    email = #{email},
+		    mobileno = #{mobileno}
+		    WHERE id = #{id};
+	</update>
+</mapper>
